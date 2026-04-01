@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "../pages/Login";
 import Chat from "../pages/Chat";
-import AuthCallback from "../pages/AuthCallback";
+import AuthCallback from "../pages/AuthCallBack";
 import ProtectedRoute from "../components/ProtectedRoute";
 
 
@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/auth" element={<AuthCallback />} />
+        {/* <Route path="/auth" element={<AuthCallback />} /> */}
         <Route
           path="/chat"
           element={

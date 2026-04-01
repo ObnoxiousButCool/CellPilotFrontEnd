@@ -10,10 +10,14 @@ export const msalConfig = {
   }
 };
 
+// export const loginRequest = {
+//   scopes: [
+//     "User.Read",
+//     "Files.ReadWrite.All",
+//     "Sites.ReadWrite.All"
+//   ]
+// };
+
 export const loginRequest = {
-  scopes: [
-    "User.Read",
-    "Files.ReadWrite.All",
-    "Sites.ReadWrite.All"
-  ]
+  scopes: ["api://0fc195b0-5cbd-4061-954e-3e0b5bbeb081/access_as_user"] 
 };

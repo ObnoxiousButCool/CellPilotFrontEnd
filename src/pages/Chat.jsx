@@ -1,12 +1,23 @@
 import { useEffect } from "react";
+import { useMsal } from "@azure/msal-react";
+import { loginRequest } from "../auth/msalConfig";
 
 function Chat() {
-  const token = sessionStorage.getItem("access_token");
+  const { instance } = useMsal();
 
   useEffect(() => {
     const callBackend = async () => {
       try {
-        const res = await fetch("http://localhost:8000/test", {
+        const account = instance.getActiveAccount();
+
+        const response = await instance.acquireTokenSilent({
+          ...loginRequest,
+          account,
+        });
+
+        const token = response.accessToken;
+
+        const res = await fetch("http://127.0.0.1:8000/test", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -21,7 +32,7 @@ function Chat() {
     };
 
     callBackend();
-  }, []);
+  }, [instance]);
 
   return (
     <div>
